@@ -1,0 +1,23 @@
+
+.item {
+   
+  list-style-type: none; 
+}
+
+.link{
+  color:var(--background-second);
+  font-weight: bold;
+  
+  text-decoration: none;
+
+}
+
+.link:hover{
+  color: var(--third);
+  cursor: pointer;
+}
+
+.activeLink{
+  color: var(--active);
+  
+}

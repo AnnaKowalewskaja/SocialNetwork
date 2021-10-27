@@ -1,0 +1,18 @@
+
+.newPost{
+  display: flex;
+  flex-direction: column;
+  
+  max-width: 300px;
+  
+}
+
+h3{
+  margin: 0;
+}
+
+.blockPosts{
+  display: grid;
+  grid-template-rows: 2fr 4fr ;
+  grid-gap: 10px;
+}
