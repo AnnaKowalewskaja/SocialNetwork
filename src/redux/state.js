@@ -10,9 +10,9 @@ let state = {
     },
   dialogsPage:{
     dialogsData:[
-        { id: 1, name: "Dima", avatar:'./img/avatars/logo.png' },
+        { id: 1, name: "Dima", avatar:'./img/avatars/avatar1.png' },
         { id: 2, name: "Rita" ,avatar:'./img/avatars/avatar1.png' },
-        { id: 3, name: "Vikaahhhhha", avatar:'./img/avatars/avatar1.png'},
+        { id: 3, name: "Vikaa", avatar:'./img/avatars/avatar1.png'},
         { id: 4, name: "Sveta", avatar:'./img/avatars/avatar1.png'},
         { id: 5, name: "Vania", avatar:'./img/avatars/avatar1.png'},
         { id: 6, name: "Nik", avatar:'./img/avatars/avatar1.png'},
