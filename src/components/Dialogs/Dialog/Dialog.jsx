@@ -5,10 +5,12 @@ import classes from "./Dialog.module.css";
 
 const Dialog = (props) => {
   let path='/dialogs/'+props.id,
-  name=props.name;
+  name=props.name,
+  avatar = props.avatar;
   return (
    <div className={classes.dialog}>
- <NavLink to={path} className={classes.dialog}>{name}</NavLink>
+   
+ <NavLink to={path}  className={classes.dialogLink}> <img src = {avatar} className = {classes.avatarDialog} alt={`avatar ${name}`}/> {<span className = {classes.nameLink}> {name} </span>}</NavLink>
    </div>
        
         

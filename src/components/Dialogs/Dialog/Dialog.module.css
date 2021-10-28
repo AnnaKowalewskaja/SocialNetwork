@@ -3,3 +3,18 @@
 
 }
 
+.avatarDialog{
+    width: 30px;
+}
+
+.dialogLink{
+    text-decoration: none;
+}
+.nameLink{
+    color: var(--first);
+    
+}
+.nameLink:hover{
+    color: var(--third);
+    cursor: pointer;
+}

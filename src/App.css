@@ -1,8 +1,9 @@
 :root {
   --background-first: #e7ecf0;
   --background-second: #ffffff;
-  --third: #4C9EEB;
+  --third: rgb(76, 158, 235);
   --active:#31689b;
+  --first:#0b1824;
   
 }
 
