@@ -10,7 +10,7 @@ const Profile = (props) => {
 
       
 
-      <MyPosts postsData ={props.forPosts}/>
+      <MyPosts postsData ={props.forPosts} addPost={props.addPost}/>
     </div>
   );
 };

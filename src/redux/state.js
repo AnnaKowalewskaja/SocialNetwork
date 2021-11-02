@@ -1,3 +1,4 @@
+import {renderEntireTree} from './../render';
 
 let state = {
     profilePage:{
@@ -31,6 +32,27 @@ let state = {
     
 
 }
+export let addPost = (postMessage) =>{
+  let newPost ={
+    id: 5,
+    message :postMessage,
+    likeCount: 9,
+  };
 
+  state.profilePage.postsData.push(newPost);
+  renderEntireTree(state);
+} 
+
+export let addMessage = (message) =>{
+
+  let id = state.dialogsPage.messagesData[state.dialogsPage.messagesData.length-1].id+1;
+  let newMessage = {
+    id: id, message: message,
+  };
+
+  state.dialogsPage.messagesData.push(newMessage);
+ 
+  renderEntireTree(state);
+}
 
 export default state;

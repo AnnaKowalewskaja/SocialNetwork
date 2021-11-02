@@ -17,7 +17,7 @@
     "h h"
     "n c";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 2fr 7fr;
   grid-gap: 20px;
 }
 
