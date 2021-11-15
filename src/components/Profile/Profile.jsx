@@ -6,11 +6,15 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 const Profile = (props) => {
   return (
     <div className="wrapper-content">
-    <ProfileInfo/>
+      <ProfileInfo />
 
-      
-
-      <MyPosts postsData ={props.forPosts} addPost={props.addPost}/>
+      <MyPosts
+        postsData={props.forPosts}
+       
+        dispatch={props.dispatch}
+        
+        defaultPostText={props.defaultPostText}
+      />
     </div>
   );
 };
