@@ -7,6 +7,7 @@ const Navbar = () => {
   return (
     <nav className='content_box' className={classes.navigation} >
     <ul>
+      
       <NavLinks link="/profile" text="Profile" ></NavLinks>
      
       <NavLinks link="/dialogs" text="Dialogs" ></NavLinks>

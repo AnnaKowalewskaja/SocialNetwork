@@ -1,3 +1,9 @@
+import { act } from "react-dom/test-utils";
+import {profileReducer} from './profile-reducer';
+import {dialogsReducer} from './dialogs-reducer';
+
+
+
 let store = {
   _state: {
     profilePage: {
@@ -28,6 +34,8 @@ let store = {
         { id: 5, message: "Ok" },
         { id: 6, message: "Ok" },
       ],
+
+      newMessageText: "",
     },
   },
   _callSubscriber() {},
@@ -38,7 +46,7 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-/*
+  /*
   addPost() {
     let id =
       this._state.profilePage.postsData[
@@ -74,39 +82,15 @@ let store = {
 
 */
 
-  dispatch(action){ //{type: 'add-post'}
-if(action.type === 'ADD-POST')
-  {
-    let id =
-    this._state.profilePage.postsData[
-      this._state.profilePage.postsData.length - 1
-    ].id + 1;
-  let newPost = {
-    id: id,
-    message: this._state.profilePage.newPostText,
-    likeCount: Math.floor(Math.random() * 300),
-  };
-  this._state.profilePage.postsData.push(newPost);
-  this._callSubscriber(this._state);
-}else if (action.type === 'UPDATE-NEW-POST-TEXT'){
-  this._state.profilePage.newPostText = action.newText;
-    this._callSubscriber(this._state);
-}else if(action.type === 'ADD-MESSAGE'){
-  let id =
-      this._state.dialogsPage.messagesData[
-        this._state.dialogsPage.messagesData.length - 1
-      ].id + 1;
-    let newMessage = {
-      id: id,
-      message: action.message,
-    };
-
-    this._state.dialogsPage.messagesData.push(newMessage);
+  dispatch(action) {
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
     this._callSubscriber(this._state);
-}
-},
-}
+  },
+};
+
+
 
 export default store;
 window.store = store;

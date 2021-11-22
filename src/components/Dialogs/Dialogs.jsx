@@ -3,18 +3,19 @@ import DialogItem from "./Dialog/Dialog";
 import classes from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import NewMessage from "./NewMessage/NewMessage";
+import {getState} from "../../redux/state";
 
 const Dialogs = (props) => {
 
-
-  let dialogsElements = props.forDialogs.map(data => 
+let state = props.store.getState().dialogsPage;
+  let dialogsElements = state.dialogsData.map(data => 
      (<DialogItem name={data.name} id={data.id} avatar = {data.avatar} />)
   )
 
 
 
 
-  let messagesElements = props.forMessages.map(data =>
+  let messagesElements = state.messagesData.map(data =>
     (<Message message={data.message} />));
 
     let newMessageElement = React.createRef();
@@ -36,12 +37,15 @@ const Dialogs = (props) => {
 
       <div className="content_box separate">
         <div className={classes.messages__items}>
+          <div>
           {
             messagesElements
           }
+          </div>
+         
           
         </div>
-        <NewMessage addMessage={props.addMessage}/>
+        <NewMessage dispatch={props.dispatch} />
       </div>
     </div>
   );

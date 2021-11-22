@@ -11,40 +11,42 @@ import Music from "./components/Music/Music";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    
       <div className="app-wrapper">
         <Header />
         <Navbar />
         <main className="app-wrapper_content">
           <Route
-            path="/dialogs"
-            render={() => (
-              <Dialogs
-                forDialogs={props.state.dialogsPage.dialogsData}
-                forMessages={props.state.dialogsPage.messagesData}
-                dispatch ={props.dispatch}
-              />
-            )}
-          />
-          <Route
             path="/profile"
             render={() => (
               <Profile
-              dispatch ={props.dispatch}
+                dispatch={props.dispatch}
                 forPosts={props.state.profilePage.postsData}
-                
-                
                 defaultPostText={props.state.profilePage.defaultPostText}
                 newPostText={props.state.profilePage.newPostText}
               />
             )}
           />
+
+          <Route
+          //route следит за url
+            path="/dialogs"
+            render={() => (
+              <Dialogs
+                forDialogs={props.state.dialogsPage.dialogsData}
+                forMessages={props.state.dialogsPage.messagesData}
+                store = {props.store}
+                dispatch={props.dispatch}
+              />
+            )}
+          />
+
           <Route path="/news" render={() => <News />} />
           <Route path="/settings" render={() => <Settings />} />
           <Route path="/music" render={() => <Music />} />
         </main>
-      </div>{" "}
-    </BrowserRouter>
+      </div>
+   
   );
 };
 
