@@ -10,6 +10,8 @@ const Navbar = () => {
       
       <NavLinks link="/profile" text="Profile" ></NavLinks>
      
+      <NavLinks link="/users" text="Users" ></NavLinks>
+
       <NavLinks link="/dialogs" text="Dialogs" ></NavLinks>
      
       <NavLinks link="/news" text="News" ></NavLinks>
