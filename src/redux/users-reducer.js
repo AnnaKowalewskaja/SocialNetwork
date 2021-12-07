@@ -1,44 +1,14 @@
 const FOLLOW = "FOLLOW",
   UNFOLLOW = "UNFOLLOW",
+  SET_CURRENT_PAGE = "SETCURRENTPAGE",
+  SET_TOTAL_COUNT = "SETTOTALCOUNT",
   SET_USERS = "SETUSERS";
 
 let initialState = {
-  usersData: [
-   /* {
-      id: 1,
-      photoUrl:
-        "https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg",
-      followed: true,
-      fullName: "Dmitry",
-      status: "I am a boss",
-      location: { city: "Minsk", country: "Belarus" },
-    },
-    {
-      id: 2,
-      photoUrl: "https://www.rosphoto.com/images/u/articles/1510/3_13.jpg",
-      followed: false,
-      fullName: "Sasza",
-      status: "I am a barista",
-      location: { city: "Krakow", country: "Poland" },
-    },
-    {
-      id: 3,
-      photoUrl: "https://www.rosphoto.com/images/u/articles/1510/3_13.jpg",
-      followed: false,
-      fullName: "Kira",
-      status: "I am a artist",
-      location: { city: "Lviv", country: "Ukraine" },
-    },
-    {
-      id: 4,
-      photoUrl:
-        "https://static-cse.canva.com/blob/195615/paul-skorupskas-7KLa-xLbSXA-unsplash-2.jpg",
-      followed: true,
-      fullName: "Pawel",
-      status: "I am a driver",
-      location: { city: "Moscow", country: "Russia" },
-    },*/
-  ],
+  usersData: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 5,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -65,10 +35,22 @@ export const usersReducer = (state = initialState, action) => {
         }),
       };
 
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    }
+case SET_TOTAL_COUNT:{
+  return{
+    ...state,
+    totalUsersCount: action.totalCount,
+  }
+}
     case SET_USERS: {
       return {
         ...state,
-        usersData: [...state.usersData, ...action.users],
+        usersData: [ ...action.users],
       };
     }
 
@@ -82,7 +64,11 @@ export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 
-export const updateNewPostTextActionCreator = (newText) => ({
-  type: "UPDATE_NEW_POST_TEXT",
-  newText: newText,
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
 });
+
+export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
+
+
