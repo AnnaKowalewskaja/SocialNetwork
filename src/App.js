@@ -1,7 +1,8 @@
+import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import { Route } from "react-router";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
@@ -9,15 +10,16 @@ import Music from "./components/Music/Music";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
+
 const App = (props) => {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <main className="app-wrapper_content">
         <Route
-          path="/profile"
-          render={() => <Profile state={props.state} store={props.store} />}
+          path="/profile/:userId?"
+          render={() => <ProfileContainer state={props.state} store={props.store} />}
         />
 
         <Route
@@ -36,4 +38,7 @@ const App = (props) => {
   );
 };
 
+
+
 export default App;
+

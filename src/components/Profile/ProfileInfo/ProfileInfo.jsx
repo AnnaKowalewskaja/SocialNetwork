@@ -1,32 +1,45 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
+import Preloader from "../../common/Preloader/Preloader";
+import userImage from "./../../../assets/images/user-image.png";
 import classes from "./ProfileInfo.module.css";
+import backgroundImage from "./../../../assets/images/image-background.jpeg"
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
+  
   return (
     <div>
-       <div className="content_box">
+      <div className="content_box">
         <img
           className={classes.img_background}
           alt="background"
-          src="https://image.freepik.com/free-vector/blue-white-polygonal-mosaic-background_1035-18004.jpg"
+          src={backgroundImage}
         />
-
-        
       </div>
 
       <div className={"content_box separate " + classes.description}>
+        
         <img
           className={classes.img_avatar}
-          alt="avatar"
-          src="https://www.fineartstorehouse.com/p/629/lens-photography-camera-aperture-dslr-14722677.jpg"
+          alt={props.profile.fullName}
+          src={
+            props.profile.photos.small == null
+              ? userImage
+              : props.profile.photos.small
+          }
         />
-        ava+description
-        
+        <div>
+          <div className="aboutUser">
+            <p>{props.profile.fullName}</p>
+            <p>{props.profile.aboutMe}</p>
+            <div className="linksUser"></div>
+          </div>
+        </div>
       </div>
     </div>
-     
-     
   );
 };
 

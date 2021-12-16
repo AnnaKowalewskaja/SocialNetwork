@@ -8,7 +8,7 @@ const Profile = (props) => {
   
   return (
     <div className="wrapper-content">
-      <ProfileInfo />
+      <ProfileInfo profile = {props.profile}/>
 
       <MyPostsContainer
         state={props.state}

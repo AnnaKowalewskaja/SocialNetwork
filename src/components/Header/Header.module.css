@@ -1,0 +1,24 @@
+.header {
+  grid-area: h;
+  background-color: var(--background-second);
+
+  
+}
+
+.header img {
+  width: 40px;
+}
+
+.loginBlock{
+  float: right;
+  
+}
+
+.loginBlock a{
+  color: var(--third);
+  text-decoration: none;
+}
+
+.loginBlock a:hover{
+  color: var(--active);
+}
