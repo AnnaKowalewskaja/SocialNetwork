@@ -20,7 +20,7 @@ const Users = (props) => {
       <div className={classes.pageCount}>
         {pages.map((p) => {
           return (
-            <button
+            <button 
               onClick={(e) => {
                 props.onPageChanged(p);
               }}
@@ -45,13 +45,15 @@ const Users = (props) => {
 
             <div>
               {u.followed ? (
-                <button
+                <button disabled = {props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
+                    props.toggleFollowingProgress(true,u.id);
                     usersAPI.unfollowUsers(u.id)
                     .then((data) => {
                         if (data.resultCode === 0) {
                           props.unfollow(u.id);
                         }
+                        props.toggleFollowingProgress(false,u.id);
                       });
                   }}
                 >
@@ -59,8 +61,9 @@ const Users = (props) => {
                   Unfollow
                 </button>
               ) : (
-                <button
+                <button disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
+                    props.toggleFollowingProgress(true,u.id);
                     usersAPI.followUsers(u.id)
                       
                       .then((data) => {
@@ -69,6 +72,7 @@ const Users = (props) => {
                          
                           props.follow(u.id);
                         }
+                        props.toggleFollowingProgress(false,u.id);
                       });
                   }}
                 >
