@@ -3,7 +3,6 @@ import userPhoto from "../../assets/images/user-image.png";
 import classes from "./Users.module.css";
 import Preloader from "../common/Preloader/Preloader";
 import { NavLink } from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 
 const Users = (props) => {
@@ -20,7 +19,7 @@ const Users = (props) => {
       <div className={classes.pageCount}>
         {pages.map((p) => {
           return (
-            <button 
+            <button
               onClick={(e) => {
                 props.onPageChanged(p);
               }}
@@ -45,38 +44,21 @@ const Users = (props) => {
 
             <div>
               {u.followed ? (
-                <button disabled = {props.followingInProgress.some(id => id === u.id)}
+                <button
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true,u.id);
-                    usersAPI.unfollowUsers(u.id)
-                    .then((data) => {
-                        if (data.resultCode === 0) {
-                          props.unfollow(u.id);
-                        }
-                        props.toggleFollowingProgress(false,u.id);
-                      });
+                    props.unfollow(u.id);
                   }}
                 >
-                  
                   Unfollow
                 </button>
               ) : (
-                <button disabled={props.followingInProgress.some(id => id === u.id)}
+                <button
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true,u.id);
-                    usersAPI.followUsers(u.id)
-                      
-                      .then((data) => {
-                       
-                        if (data.resultCode === 0) {
-                         
-                          props.follow(u.id);
-                        }
-                        props.toggleFollowingProgress(false,u.id);
-                      });
+                    props.follow(u.id);
                   }}
                 >
-                 
                   Follow
                 </button>
               )}
