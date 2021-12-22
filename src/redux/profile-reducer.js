@@ -1,4 +1,4 @@
-import { profileAPI } from "./../api/api";
+import { authAPI } from "./../api/api";
 
 
 const ADD_POST = "ADD-POST",
@@ -62,7 +62,7 @@ export const getProfileUser = (userId, ) => {
         if (!userId) {
             userId = 3;
         }
-        profileAPI.profileUser(userId)
+        authAPI.profileUser(userId)
 
         .then((data) => {
             dispatch(setUserProfile(data));
