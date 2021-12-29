@@ -31,7 +31,7 @@ export const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA,
 export default authReducer;
 
 
-export const getAuthUser = () => {
+export const getAuthUserData = () => {
     return (dispatch) => {
 
         authAPI.authMe()

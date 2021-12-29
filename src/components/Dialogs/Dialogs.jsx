@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router";
 import DialogItem from "./Dialog/Dialog";
 import classes from "./Dialogs.module.css";
 import Message from "./Message/Message";
@@ -15,6 +16,7 @@ const Dialogs = (props) => {
   ));
 
   let newMessageElement = React.createRef();
+
 
   return (
     <div className="wrapper-content " className={classes.dialogs}>

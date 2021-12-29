@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+
 import Preloader from "../../common/Preloader/Preloader";
 import userImage from "./../../../assets/images/user-image.png";
 import classes from "./ProfileInfo.module.css";
 import backgroundImage from "./../../../assets/images/image-background.jpeg"
+import  ProfileStatus  from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -11,15 +12,8 @@ const ProfileInfo = (props) => {
   }
   
   return (
-    <div>
-      <div className="content_box">
-        <img
-          className={classes.img_background}
-          alt="background"
-          src={backgroundImage}
-        />
-      </div>
-
+    <div> 
+      
       <div className={"content_box separate " + classes.description}>
         
         <img
@@ -34,7 +28,8 @@ const ProfileInfo = (props) => {
         <div>
           <div className="aboutUser">
             <p>{props.profile.fullName}</p>
-            <p>{props.profile.aboutMe}</p>
+           
+             <ProfileStatus status = {props.status} updateStatus={props.updateStatus} />
             <div className="linksUser"></div>
           </div>
         </div>

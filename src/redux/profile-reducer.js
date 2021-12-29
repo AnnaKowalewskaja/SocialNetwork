@@ -1,8 +1,9 @@
-import { authAPI } from "./../api/api";
+import { authAPI, profileAPI } from "./../api/api";
 
 
 const ADD_POST = "ADD-POST",
     SET_USER_PROFILE = "SETUSERPROFILE",
+    SET_STATUS = "SET-STATUS",
     UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
     newPostText: "",
     defaultPostText: "Write new post",
     profile: null,
+    status:"",
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -44,23 +46,57 @@ export const profileReducer = (state = initialState, action) => {
                     newPostText: action.newText,
                 };
             }
+            case SET_STATUS :{
+                return {
+                    ...state,
+                    status: action.status,
+                };
+            }
+
+
         default:
             return state;
     }
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
-export const updateNewPostTextActionCreator = (newText) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: newText,
-});
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setStatus = (status) => ({ type: SET_STATUS, status })
 
-export const getProfileUser = (userId, ) => {
+export const updateNewPostTextActionCreator = (newText) => ({type: UPDATE_NEW_POST_TEXT, newText});
+
+
+
+
+export const getStatus = (userId) =>(dispatch) => {
+
+      
+        profileAPI.getStatus(userId)
+        .then((response) => {
+            
+            dispatch(setStatus(response.data));
+        });
+    }
+
+
+    export const updateStatus = (status) =>(dispatch) => {
+
+      
+        profileAPI.updateUserStatus(status)
+        .then((response) => {
+           if(response.data.resultCode===0){
+           
+            dispatch(setStatus(status));}
+        });
+
+        
+    }
+
+export const getProfileUser = (userId ) => {
     return (dispatch) => {
 
         if (!userId) {
-            userId = 3;
+            userId = 21135;
         }
         authAPI.profileUser(userId)
 
